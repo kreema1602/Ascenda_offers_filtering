@@ -11,7 +11,7 @@ def main():
 	while not validate_date(input_date):
 		input_date = input("Your input was not follow the (yyyy-mm-dd) format, please input again: ")
 	input_date = datetime.datetime.strptime(input_date, '%Y-%m-%d')
-
+	
 	# read JSON file
 	inputFile = open("test/input.json")
 	data = json.load(inputFile)
@@ -21,7 +21,6 @@ def main():
 	
 	for i in data["offers"]:
 		if filterCate_ValidDate(i, input_date):
-			print(i)
 			i["merchants"] = closestMerchant(i["merchants"])
 			# Create offer1 if offer1 not exist
 			if not offer1:
@@ -53,6 +52,7 @@ def main():
 	
 	inputFile.close()
 	outputFile.close()
+
 
 if __name__ == "__main__":
 	main()
