@@ -1,8 +1,8 @@
 import datetime
 import json
-from Ascenda_offers.date_validator import validate_date
-from Ascenda_offers.offerFilterCategoryAndValidDate import filterCate_ValidDate
-from Ascenda_offers.ClosestMerchant import closestMerchant
+from Ascenda_offers.utilities.ClosestMerchant import closestMerchant
+from Ascenda_offers.utilities.date_validator import validate_date
+from Ascenda_offers.utilities.offerFilterCategoryAndValidDate import filterCate_ValidDate
 
 
 def main():
@@ -11,18 +11,17 @@ def main():
 	while not validate_date(input_date):
 		input_date = input("Your input was not follow the (yyyy-mm-dd) format, please input again: ")
 	input_date = datetime.datetime.strptime(input_date, '%Y-%m-%d')
-	
+
 	# read JSON file
-	f = open("input.json")
-	data = json.load(f)
+	inputFile = open("test/input.json")
+	data = json.load(inputFile)
 	
 	# Create 2 empty offer
 	offer1, offer2 = {}, {}
 	
-	input_date = datetime.datetime(2019, 12, 25)
-	
 	for i in data["offers"]:
 		if filterCate_ValidDate(i, input_date):
+			print(i)
 			i["merchants"] = closestMerchant(i["merchants"])
 			# Create offer1 if offer1 not exist
 			if not offer1:
@@ -49,9 +48,11 @@ def main():
 	
 	# Write 2 offer into JSON file
 	resultDict = {"offers": [offer1, offer2]}
-	with open("output.json", "w") as outfile:
-		outfile.write(json.dumps(resultDict))
-
+	with open("test/output.json", "w") as outputFile:
+		outputFile.write(json.dumps(resultDict))
+	
+	inputFile.close()
+	outputFile.close()
 
 if __name__ == "__main__":
 	main()

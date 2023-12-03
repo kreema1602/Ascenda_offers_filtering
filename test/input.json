@@ -88,39 +88,6 @@
         }
       ],
       "valid_to": "2020-05-01"
-    },
-    {
-        "id": 7,
-        "title": "Offer 7",
-        "description": "Offer 7 description",
-        "category": 3,
-        "merchants": [
-            {
-                "id": 8,
-                "name": "Offer7 Merchant1",
-                "distance": 0.6
-            }
-        ],
-        "valid_to": "2020-06-01"
-    },
-    {
-        "id": 8,
-        "title": "Offer 8",
-        "description": "Offer 8 description",
-        "category": 4,
-        "merchants": [
-            {
-                "id": 9,
-                "name": "Offer8 Merchant1",
-                "distance": 1.0
-            },
-            {
-                "id": 10,
-                "name": "Offer8 Merchant2",
-                "distance": 1.1
-            }
-        ],
-        "valid_to": "2020-07-01"
     }
   ]
 }
