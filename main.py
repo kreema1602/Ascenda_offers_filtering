@@ -1,8 +1,8 @@
 import datetime
 import json
-from Ascenda_offers.utilities.ClosestMerchant import closestMerchant
-from Ascenda_offers.utilities.date_validator import validate_date
-from Ascenda_offers.utilities.offerFilterCategoryAndValidDate import filterCate_ValidDate
+from utilities.ClosestMerchant import closestMerchant
+from utilities.date_validator import validate_date
+from utilities.offerFilterCategoryAndValidDate import filterCate_ValidDate
 
 
 def main():
