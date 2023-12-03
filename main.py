@@ -7,7 +7,7 @@ from Ascenda_offers.utilities.offerFilterCategoryAndValidDate import filterCate_
 
 def main():
 	# Read user input
-	input_date = input("Enter a date (yyyy-mm-dd): ")
+	input_date = input("Enter check-in date (yyyy-mm-dd): ")
 	while not validate_date(input_date):
 		input_date = input("Your input was not follow the (yyyy-mm-dd) format, please input again: ")
 	input_date = datetime.datetime.strptime(input_date, '%Y-%m-%d')
