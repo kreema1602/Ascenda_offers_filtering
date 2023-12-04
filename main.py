@@ -43,6 +43,7 @@ def main():
 			if i["category"] == offer1["category"] == offer2["category"]:
 				if i["merchants"]["distance"] < offer1["merchants"]["distance"]:
 					offer1 = i
+					offer2 = offer1
 				elif i["merchants"]["distance"] < offer2["merchants"]["distance"]:
 					offer2 = i
 				
