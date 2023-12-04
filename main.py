@@ -42,14 +42,16 @@ def main():
 			# Case 3 offers in the same category
 			if i["category"] == offer1["category"] == offer2["category"]:
 				if i["merchants"]["distance"] < offer1["merchants"]["distance"]:
+					offer2 = offer1.copy()
 					offer1 = i
-					offer2 = offer1
 				elif i["merchants"]["distance"] < offer2["merchants"]["distance"]:
 					offer2 = i
 				
 			# Replace second offer with current offer if offer1 = offer 2
-			if i["category"] != offer1["category"] and offer1["category"] == offer2["category"]:
+			elif i["category"] != offer1["category"] and offer1["category"] == offer2["category"]:
 				offer2 = i
+				if offer1["merchants"]["distance"] > offer2["merchants"]["distance"]:
+					offer1, offer2 = offer2, offer1
 			
 			# Check if current offer is better than offer1 (same category)
 			elif i["category"] == offer1["category"] and i["merchants"]["distance"] < offer1["merchants"]["distance"]:
@@ -61,8 +63,8 @@ def main():
 			elif i["category"] != offer1["category"] and offer1["category"] != offer2["category"]:
 				# Replace current offer with offer1 if its distance better
 				if i["merchants"]["distance"] < offer1["merchants"]["distance"]:
+					offer2 = offer1.copy()
 					offer1 = i
-					
 				# Replace current offer with offer2 if its distance better
 				elif i["merchants"]["distance"] < offer2["merchants"]["distance"]:
 					offer2 = i
