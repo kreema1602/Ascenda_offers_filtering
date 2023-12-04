@@ -40,10 +40,14 @@ def main():
 			# Replace second offer with current offer if offer1 = offer 2
 			if i["category"] != offer1["category"] and offer1["category"] == offer2["category"]:
 				offer2 = i
+			
+			# Check if current offer is better than offer1 (same category)
 			elif i["category"] == offer1["category"] and i["merchants"]["distance"] < offer1["merchants"]["distance"]:
 				offer1 = i
+			# Check if current offer is better than offer1 (same category)
 			elif i["category"] == offer2["category"] and i["merchants"]["distance"] < offer2["merchants"]["distance"]:
 				offer2 = i
+			
 			elif i["category"] != offer1["category"] and offer1["category"] != offer2["category"]:
 				# Replace current offer with offer1 if its distance better
 				if i["merchants"]["distance"] < offer1["merchants"]["distance"]:
