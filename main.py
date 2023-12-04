@@ -30,9 +30,9 @@ def main():
 			if not offer1:
 				offer1 = i
 				continue
-				
-			# Create offer2 if offer1 not exist
-			if offer1 and not offer2:
+			
+			# Create offer2 if offer2 not exist
+			elif offer1 and not offer2:
 				offer2 = i
 				# This line ensure offer2.distance > offer1.distance
 				if offer1["merchants"]["distance"] > offer2["merchants"]["distance"]:
@@ -40,13 +40,13 @@ def main():
 				continue
 			
 			# Case 3 offers in the same category
-			if i["category"] == offer1["category"] == offer2["category"]:
+			elif i["category"] == offer1["category"] == offer2["category"]:
 				if i["merchants"]["distance"] < offer1["merchants"]["distance"]:
 					offer2 = offer1.copy()
 					offer1 = i
 				elif i["merchants"]["distance"] < offer2["merchants"]["distance"]:
 					offer2 = i
-				
+			
 			# Replace second offer with current offer if offer1 = offer 2
 			elif i["category"] != offer1["category"] and offer1["category"] == offer2["category"]:
 				offer2 = i
