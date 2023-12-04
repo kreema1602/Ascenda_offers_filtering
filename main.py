@@ -7,10 +7,14 @@ from utilities.offerFilterCategoryAndValidDate import filterCate_ValidDate
 
 def main():
 	# Read user input
+	print("========================================")
+	print("Asenda Travel Platform - Offer Filtering")
 	input_date = input("Enter check-in date (yyyy-mm-dd): ")
 	while not validate_date(input_date):
 		input_date = input("Your input was not follow the (yyyy-mm-dd) format, please input again: ")
 	input_date = datetime.datetime.strptime(input_date, '%Y-%m-%d')
+	
+	# input_date = datetime.datetime(2019, 12, 25)
 	
 	# read JSON file
 	inputFile = open("test/input.json")
@@ -47,8 +51,17 @@ def main():
 	
 	# Write 2 offer into JSON file
 	resultDict = {"offers": [offer1, offer2]}
-	with open("test/output.json", "w") as outputFile:
+	with open("output.json", "w") as outputFile:
 		outputFile.write(json.dumps(resultDict))
+	
+	print("Best offer available:")
+	if not offer1:
+		print("There is no offers available :(")
+	else:
+		print(offer1)
+		print(offer2)
+	
+	print("Your offers have been save to output.json file !")
 	
 	inputFile.close()
 	outputFile.close()
